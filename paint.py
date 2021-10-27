@@ -1,5 +1,6 @@
 from turtle import *
 from freegames import vector
+import math
 
 def line(start, end):
     "Draw line from start to end."
@@ -28,7 +29,8 @@ def circulo(start, end):
     down()
     begin_fill()
 
-    circle(end.x - start.x)
+    r = math.sqrt((end.x - start.x)**2 + (end.y - start.y)**2)
+    circle(r)
 
     end_fill()
 
