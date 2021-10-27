@@ -22,23 +22,16 @@ def square(start, end):
 
     end_fill()
 
-def circle(start, end):
+def circulo(start, end):
     "Draw circle from start to end."
-    r = 100
-    theta = 0
     up()
-    x = r*math.cos(theta)
-    y = r*math.sin(theta)
-    goto(x,y)
-    for i in range(30):
-        theta = theta + 0.3
-        down()
-        x2 = r*math.cos(theta)
-        y2 = r*math.sin(theta)
-        goto(x2,y2)
-        
+    goto(start.x, start.y)
+    down()
+    begin_fill()
 
+    circle(end.x - start.x)
 
+    end_fill()
 
 def rectangle(start, end):
     "Draw rectangle from start to end."
@@ -76,7 +69,7 @@ onkey(lambda: color('blue'), 'B')
 onkey(lambda: color('red'), 'R')
 onkey(lambda: store('shape', line), 'l')
 onkey(lambda: store('shape', square), 's')
-onkey(lambda: store('shape', circle), 'c')
+onkey(lambda: store('shape', circulo), 'c')
 onkey(lambda: store('shape', rectangle), 'r')
 onkey(lambda: store('shape', triangle), 't')
 done()
