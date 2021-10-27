@@ -1,5 +1,20 @@
+"""Paint, for drawing shapes.
+
+Exercises
+
+1. Add a color.
+2. Complete circle.
+3. Complete rectangle.
+4. Complete triangle.
+5. Add width parameter.
+
+"""
+
+
 from turtle import *
 from freegames import vector
+
+speed(10)
 
 def line(start, end):
     "Draw line from start to end."
@@ -21,17 +36,55 @@ def square(start, end):
 
     end_fill()
 
-def circle(start, end):
+def circle(start, end): # Ejercicio 2: Dibujar un circulo
     "Draw circle from start to end."
-    pass  # TODO
+    pi = 3.141592
+    diametro = end.x - start.x
+    radio = diametro / 2
+    circunferencia = 2 * pi * radio
+    arco = circunferencia / 360
 
-def rectangle(start, end):
-    "Draw rectangle from start to end."
-    pass  # TODO
+    # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
 
-def triangle(start, end):
+    for i in range(360):
+        forward(arco)
+        right(1)
+
+    end_fill()
+
+def rectangle(start, end): # Ejercicio 3: Dibujar un rectangulo
+    "Draw rectangle from start to end." 
+    up()
+    goto(start.x, start.y)
+    down()
+    begin_fill()
+
+    for i in range(2):
+        forward(end.x - start.x)
+        left(90)
+        forward(end.y - start.y)
+        left(90)
+    
+    end_fill()
+
+def triangle(start, end): # Ejercicio 4: Dibujar un triangulo equilatero
     "Draw triangle from start to end."
-    pass  # TODO
+    # TODO
+    up()
+    goto(start.x, start.y)
+    down()
+    lado = abs(end.x - start.x)
+    begin_fill()
+    
+    for i in range(3):
+        forward(lado)
+        left(120)
+        
+    end_fill()
 
 def tap(x, y):
     "Store starting point or draw shape."
@@ -54,6 +107,7 @@ setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
 onkey(undo, 'u')
+onkey(lambda: color('orange'), 'O') # Ejercicio 1: Color nuevo
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
 onkey(lambda: color('green'), 'G')
